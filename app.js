@@ -50,7 +50,7 @@ class Server {
   }
 
   /**
-   * Configure application
+   * Configura a aplicação
    *
    * @class Server
    * @method config
@@ -58,7 +58,6 @@ class Server {
   config() {
     this.app.use(cors());
     this.app.set('trust proxy', true);
-    // this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
     this.port = global.conf.listenPort;
 
     this.app.use(bodyParser.json({ limit: '20mb' }));
@@ -81,7 +80,7 @@ class Server {
   }
 
   /**
-   * Create API routers. This routers do not use csrf token!
+   * Cria as rotas da API.
    *
    * @class Server
    * @method api

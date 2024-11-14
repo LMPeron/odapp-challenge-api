@@ -5,6 +5,12 @@ module.exports = class PatientRepository extends AbstractRepository {
     super('patient');
   }
 
+  /**
+   * Obtém um paciente pelo ID, incluindo informações de localização.
+   * @param {number|string} id - O ID do paciente a ser obtido.
+   * @returns {Promise<Object|null>} O paciente encontrado ou null se não existir.
+   * @throws {Error} Lança um erro caso a operação de busca falhe.
+   */
   async getById(id) {
     const patient = await this._db.prisma.patient.findUnique({
       where: {
@@ -22,6 +28,16 @@ module.exports = class PatientRepository extends AbstractRepository {
     return patient;
   }
 
+  /**
+   * Obtém uma lista de pacientes com suporte a paginação, filtro e ordenação.
+   * @param {number} [offset=1] - O número de registros a serem pulados.
+   * @param {number} [limit=5] - O número máximo de registros a serem retornados.
+   * @param {string} [filter=''] - Termo para filtrar pacientes por nome ou localização.
+   * @param {string} [sortBy='createdAt'] - O campo pelo qual ordenar os resultados.
+   * @param {string} [sortOrder='desc'] - A ordem de classificação ('asc' ou 'desc').
+   * @returns {Promise<Array<Object>>} Uma lista de pacientes que correspondem aos critérios.
+   * @throws {Error} Lança um erro caso a operação de busca falhe.
+   */
   async getAll(offset = 1, limit = 5, filter = '', sortBy = 'createdAt', sortOrder = 'desc') {
     const query = {
       select: {

@@ -8,6 +8,13 @@ module.exports = class AuthController {
     this._adminRepository = new AdminRepository();
   }
 
+  /**
+   * Renova o token de autenticação para um usuário autenticado.
+   * @param {Object} req - O objeto de requisição HTTP, contendo o usuário autenticado.
+   * @param {Object} res - O objeto de resposta HTTP para enviar os resultados.
+   * @returns {Object} Uma resposta HTTP contendo o novo token e os dados do usuário.
+   * @throws {Error} Lança um erro se o usuário não for encontrado ou se a operação falhar.
+   */
   async renewToken(req, res) {
     try {
       const { user: userId } = req;
@@ -21,6 +28,13 @@ module.exports = class AuthController {
     }
   }
 
+  /**
+   * Registra um novo usuário administrador no sistema.
+   * @param {Object} req - O objeto de requisição HTTP contendo os dados do usuário a ser cadastrado.
+   * @param {Object} res - O objeto de resposta HTTP para enviar os resultados.
+   * @returns {Object} Uma resposta HTTP contendo o token de autenticação e os dados do usuário criado.
+   * @throws {Error} Lança um erro se o email já estiver cadastrado ou se a operação de cadastro falhar.
+   */
   async register(req, res) {
     try {
       const user = req.body;
@@ -39,6 +53,13 @@ module.exports = class AuthController {
     }
   }
 
+  /**
+   * Autentica um usuário administrador no sistema.
+   * @param {Object} req - O objeto de requisição HTTP contendo o email e a senha do usuário.
+   * @param {Object} res - O objeto de resposta HTTP para enviar os resultados.
+   * @returns {Object} Uma resposta HTTP contendo o token de autenticação e os dados do usuário.
+   * @throws {Error} Lança um erro se as credenciais forem inválidas ou se a operação de login falhar.
+   */
   async login(req, res) {
     try {
       const { email, password } = req.body;
