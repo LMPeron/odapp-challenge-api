@@ -10,7 +10,7 @@ module.exports = class PatientValidator {
       const result = schema.validate(req.body);
       if (result.error) ErrorHandler.validator(result.error);
     } catch (error) {
-      return ErrorHandler.http(error, res, 'Falha em validação ao criar patiente');
+      return ErrorHandler.http(error, res, 'Falha em validação ao criar paciente');
     }
     return next();
   }
@@ -21,7 +21,7 @@ module.exports = class PatientValidator {
       const result = schema.validate(req.body);
       if (result.error) ErrorHandler.validator(result.error);
     } catch (error) {
-      return ErrorHandler.http(error, res, 'Falha em validação ao atualizar patiente');
+      return ErrorHandler.http(error, res, 'Falha em validação ao atualizar paciente');
     }
     return next();
   }

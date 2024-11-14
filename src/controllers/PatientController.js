@@ -28,7 +28,7 @@ module.exports = class PatientController {
       }
       return res.status(200).json({ success: true, patients: patients, count: count });
     } catch (error) {
-      return ErrorHandler.http(error, res, 'Falha ao buscar patientes');
+      return ErrorHandler.http(error, res, 'Falha ao buscar pacientes');
     }
   }
 
@@ -45,7 +45,7 @@ module.exports = class PatientController {
       const patient = await this._patientRepository.getById(id);
       return res.status(200).json({ success: true, patient: patient });
     } catch (error) {
-      return ErrorHandler.http(error, res, 'Falha ao buscar patiente');
+      return ErrorHandler.http(error, res, 'Falha ao buscar paciente');
     }
   }
 
@@ -72,7 +72,7 @@ module.exports = class PatientController {
       await this._patientRepository.deleteCache(`patients:count`);
       return res.status(200).json({ success: true, data: createdPatient });
     } catch (error) {
-      return ErrorHandler.http(error, res, 'Falha ao cadastrar patiente');
+      return ErrorHandler.http(error, res, 'Falha ao cadastrar paciente');
     }
   }
 
@@ -101,7 +101,7 @@ module.exports = class PatientController {
       });
       return res.status(200).json({ success: true, data: updatedPatient });
     } catch (error) {
-      return ErrorHandler.http(error, res, 'Falha ao atualizar patiente');
+      return ErrorHandler.http(error, res, 'Falha ao atualizar paciente');
     }
   }
 
@@ -121,7 +121,7 @@ module.exports = class PatientController {
       await this._patientRepository.deleteCache(`patients:count`);
       return res.status(200).json({ success: true });
     } catch (error) {
-      return ErrorHandler.http(error, res, 'Falha ao deletar patiente');
+      return ErrorHandler.http(error, res, 'Falha ao deletar paciente');
     }
   }
 
@@ -139,7 +139,7 @@ module.exports = class PatientController {
       await this._patientRepository.deleteCache(`patients:count`);
       return res.status(200).json({ success: true });
     } catch (error) {
-      return ErrorHandler.http(error, res, 'Falha ao deletar patientes');
+      return ErrorHandler.http(error, res, 'Falha ao deletar pacientes');
     }
   }
 };

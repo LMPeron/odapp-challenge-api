@@ -48,7 +48,7 @@ describe('PatientController', () => {
       const error = new Error('Database error');
       patientController._patientRepository.getAll.mockRejectedValue(error);
       await patientController.getAll(req, res);
-      expect(ErrorHandler.http).toHaveBeenCalledWith(error, res, 'Falha ao buscar patientes');
+      expect(ErrorHandler.http).toHaveBeenCalledWith(error, res, 'Falha ao buscar pacientes');
     });
   });
 
@@ -68,7 +68,7 @@ describe('PatientController', () => {
       req.params.id = '1';
       patientController._patientRepository.getById.mockRejectedValue(error);
       await patientController.getById(req, res);
-      expect(ErrorHandler.http).toHaveBeenCalledWith(error, res, 'Falha ao buscar patiente');
+      expect(ErrorHandler.http).toHaveBeenCalledWith(error, res, 'Falha ao buscar paciente');
     });
   });
 
@@ -101,7 +101,7 @@ describe('PatientController', () => {
       req.body = patientData;
       patientController._patientRepository.create.mockRejectedValue(error);
       await patientController.create(req, res);
-      expect(ErrorHandler.http).toHaveBeenCalledWith(error, res, 'Falha ao cadastrar patiente');
+      expect(ErrorHandler.http).toHaveBeenCalledWith(error, res, 'Falha ao cadastrar paciente');
     });
   });
 
@@ -138,7 +138,7 @@ describe('PatientController', () => {
       patientController._patientRepository.getById.mockResolvedValue(null);
       await patientController.update(req, res);
       const error = { status: 400, message: 'Patiente não encontrado' };
-      expect(ErrorHandler.http).toHaveBeenCalledWith(error, res, 'Falha ao atualizar patiente');
+      expect(ErrorHandler.http).toHaveBeenCalledWith(error, res, 'Falha ao atualizar paciente');
     });
 
     it('should handle errors in update', async () => {
@@ -148,7 +148,7 @@ describe('PatientController', () => {
       req.body = {};
       patientController._patientRepository.getById.mockRejectedValue(error);
       await patientController.update(req, res);
-      expect(ErrorHandler.http).toHaveBeenCalledWith(error, res, 'Falha ao atualizar patiente');
+      expect(ErrorHandler.http).toHaveBeenCalledWith(error, res, 'Falha ao atualizar paciente');
     });
   });
 
@@ -174,7 +174,7 @@ describe('PatientController', () => {
       patientController._patientRepository.getById.mockResolvedValue(null);
       await patientController.delete(req, res);
       const error = { status: 400, message: 'Patiente não encontrado' };
-      expect(ErrorHandler.http).toHaveBeenCalledWith(error, res, 'Falha ao deletar patiente');
+      expect(ErrorHandler.http).toHaveBeenCalledWith(error, res, 'Falha ao deletar paciente');
     });
 
     it('should handle errors in delete', async () => {
@@ -183,7 +183,7 @@ describe('PatientController', () => {
       req.params.id = String(id);
       patientController._patientRepository.getById.mockRejectedValue(error);
       await patientController.delete(req, res);
-      expect(ErrorHandler.http).toHaveBeenCalledWith(error, res, 'Falha ao deletar patiente');
+      expect(ErrorHandler.http).toHaveBeenCalledWith(error, res, 'Falha ao deletar paciente');
     });
   });
 
@@ -205,7 +205,7 @@ describe('PatientController', () => {
       req.body.ids = [1, 2, 3];
       patientController._patientRepository.deleteAll.mockRejectedValue(error);
       await patientController.deleteBulk(req, res);
-      expect(ErrorHandler.http).toHaveBeenCalledWith(error, res, 'Falha ao deletar patientes');
+      expect(ErrorHandler.http).toHaveBeenCalledWith(error, res, 'Falha ao deletar pacientes');
     });
   });
 });
