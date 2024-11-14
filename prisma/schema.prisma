@@ -1,0 +1,52 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-1.1.x"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Patient {
+  id           Int       @id @default(autoincrement())
+  name         String
+  age          Int
+  registeredAt DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  locationId   Int?
+  Location     Location? @relation(fields: [locationId], references: [id])
+}
+
+model Location {
+  id      Int       @id @default(autoincrement())
+  City    City      @relation(fields: [cityId], references: [id])
+  cityId  Int
+  State   State     @relation(fields: [stateId], references: [id])
+  stateId Int
+  Patient Patient[]
+}
+
+model State {
+  id       Int        @id @default(autoincrement())
+  name     String
+  Cities   City[]
+  Location Location[]
+}
+
+model City {
+  id       Int        @id @default(autoincrement())
+  name     String
+  stateId  Int
+  State    State      @relation(fields: [stateId], references: [id])
+  Location Location[]
+}
