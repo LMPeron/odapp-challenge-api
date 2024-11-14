@@ -6,8 +6,8 @@ A API de Gerenciamento de Pacientes Odapp é um serviço RESTful construído com
 
 ## Funcionalidades
 
-- Operações CRUD: Crie, recupere, atualize e delete registros de pacientes facilmente.
-- Paginação e Filtragem: Suporta paginação e filtragem para recuperação eficiente de dados.
+- Operações CRUD: Crie, recupere, atualize e delete registros de pacientes.
+- Paginação e Filtragem: Suporta paginação e filtragem para recuperação de dados.
 - Ordenação: Ordene dados de pacientes com base em diferentes campos e ordens.
 - Deleção em Massa: Delete múltiplos registros de pacientes em uma única operação.
 - Cache: Implementa cache para otimizar o desempenho e reduzir a carga no banco de dados.
@@ -105,7 +105,6 @@ Resposta de Sucesso:
       "id": 1,
       "name": "John Doe",
       "age": 30,
-      "createdAt": "2021-01-01T00:00:00Z",
       ...
     },
     ...
@@ -134,8 +133,7 @@ Conteúdo:
   "patient": {
     "id": 1,
     "name": "John Doe",
-"age": 30,
-    "createdAt": "2021-01-01T00:00:00Z",
+    "age": 30,
     ...
   }
 }
@@ -150,9 +148,9 @@ Parâmetros do Corpo:
 ```json
 {
   "name": "Jane Smith",
-"age": 28,
-"city": 1,
-"state": 1
+  "age": 28,
+  "city": 1,
+  "state": 1
 }
 ```
 
@@ -164,13 +162,12 @@ Conteúdo:
 ```json
 {
   "success": true,
-"data": {
-"id": 2,
-"name": "Jane Smith",
-"age": 28,
-"createdAt": "2021-01-02T00:00:00Z",
-...
-}
+  "data": {
+    "id": 2,
+    "name": "Jane Smith",
+    "age": 28,
+    ...
+  }
 }
 ```
 
@@ -187,10 +184,10 @@ Conteúdo:
 
 ```json
 {
-"name": "Jane Doe",
-"age": 29,
-"city": 2,
-"state": 2
+  "name": "Jane Doe",
+  "age": 29,
+  "city": 2,
+  "state": 2
 }
 ```
 
@@ -203,13 +200,12 @@ Conteúdo:
 ```json
 {
   "success": true,
-"data": {
-"id": 2,
-"name": "Jane Doe",
-"age": 29,
-"updatedAt": "2021-01-03T00:00:00Z",
-...
-}
+  "data": {
+    "id": 2,
+    "name": "Jane Doe",
+    "age": 29,
+    ...
+  }
 }
 ```
 
@@ -230,7 +226,7 @@ Parâmetros de URL:
 
 ```json
 {
-"success": true
+  "success": true
 }
 ```
 
@@ -242,7 +238,7 @@ Parâmetros do Corpo:
 
 ```json
 {
-"ids": [2, 3, 4]
+  "ids": [2, 3, 4]
 }
 ```
 
@@ -268,8 +264,9 @@ Código: Código de status HTTP correspondente.
 ```json
 {
   "success": false,
-"message": "Mensagem de erro descrevendo o que deu errado."
+  "message": "Mensagem de erro descrevendo o que deu errado."
 }
+```
 
 Por exemplo, se um paciente não for encontrado:
 
@@ -283,7 +280,7 @@ Por exemplo, se um paciente não for encontrado:
 ## Estrutura do Projeto
 
 ```
-patient-management-api/
+odapp-challenge-api/
 ├── controllers/
 │ └── PatientController.js
 ├── database/
@@ -325,3 +322,7 @@ Se você tiver alguma dúvida ou precisar de mais assistência, sinta-se à vont
 
 GitHub: LMPeron
 Email: peronleonardo0@gmail.com
+
+```
+
+```
