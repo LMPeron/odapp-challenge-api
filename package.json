@@ -7,7 +7,7 @@
     "dev": "nodemon app.js",
     "start": "node app.js",
     "api": "node api_gen",
-    "test": "jest --forceExit --runInBand --detectOpenHandles --verbose",
+    "test": "jest",
     "prisma push": "npx prisma db push",
     "prisma generate": "npx prisma db generate"
   },
@@ -35,6 +35,7 @@
     "module-alias": "^2.2.3",
     "multer": "^1.4.5-lts.1",
     "mysql": "2.16.0",
+    "node-mocks-http": "^1.16.1",
     "redis": "^3.1.2",
     "uuid": "^10.0.0"
   },
@@ -48,7 +49,7 @@
   },
   "jest": {
     "testMatch": [
-      "**/*_test.js"
+      "**/*.test.js"
     ],
     "jest": {
       "globals": {

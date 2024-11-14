@@ -8,13 +8,13 @@ const prisma = new PrismaClient();
 async function main() {
   console.log(`Start seeding ...`);
 
-  // console.log(`states...`);
-  // for (const state of states) {
-  //   await prisma.state.create({
-  //     data: state,
-  //   });
-  //   console.log(`state ${state.name} created`);
-  // }
+  console.log(`states...`);
+  for (const state of states) {
+    await prisma.state.create({
+      data: state,
+    });
+    console.log(`state ${state.name} created`);
+  }
 
   console.log(`patients...`);
   for (const patient of patients) {
