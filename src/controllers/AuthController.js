@@ -1,6 +1,6 @@
 const ErrorHandler = require('../utils/ErrorHandler');
 const JwtToken = require('../utils/JwtToken');
-const Encrypt = require('../utils/encrypt');
+const Encrypt = require('../utils/Encrypt');
 const AdminRepository = require('../database/AdminRepository');
 
 module.exports = class AuthController {
