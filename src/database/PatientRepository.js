@@ -87,4 +87,23 @@ module.exports = class PatientRepository extends AbstractRepository {
     const patients = await this._db.prisma.patient.findMany(query);
     return patients;
   }
+
+  /**
+   * Obtém uma lista de pacientes para a versão mobile.
+   * @returns {Promise<Array<Object>>} Uma lista de pacientes.
+   * @throws {Error} Lança um erro caso a operação de busca falhe.
+   */
+  async getMobile() {
+    const patients = await this._db.prisma.patient.findMany({
+      include: {
+        Location: {
+          include: {
+            City: true,
+            State: true,
+          },
+        },
+      },
+    });
+    return patients;
+  }
 };

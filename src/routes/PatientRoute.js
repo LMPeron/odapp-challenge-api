@@ -13,6 +13,10 @@ PatientRouter.get(
   patientController.getAll.bind(patientController)
 );
 PatientRouter.get(
+  '/mobile',
+  patientController.getMobile.bind(patientController)
+);
+PatientRouter.get(
   '/:id',
   authMiddleWare.checkAuthentication.bind(authMiddleWare),
   patientController.getById.bind(patientController)

@@ -142,4 +142,25 @@ module.exports = class PatientController {
       return ErrorHandler.http(error, res, 'Falha ao deletar pacientes');
     }
   }
+
+  /**
+   * Obtém uma lista de pacientes para a versão mobile.
+   * @param {Object} _req - O objeto de requisição HTTP (não utilizado).
+   * @param {Object} res - O objeto de resposta HTTP para enviar os resultados.
+   * @returns {Object} Uma resposta HTTP contendo a lista de pacientes.
+   * @throws {Error} Lança um erro caso a busca falhe.
+   */
+  async getMobile(_req, res) {
+    try {
+      const cacheKey = `patients:mobile`;
+      let patients = await this._patientRepository.getCache(cacheKey);
+      if (!patients) {
+        patients = await this._patientRepository.getMobile();
+        await this._patientRepository.setCache(cacheKey, patients, 60);
+      }
+      return res.status(200).json({ success: true, patients: patients });
+    } catch (error) {
+      return ErrorHandler.http(error, res, 'Falha ao buscar pacientes');
+    }
+  }
 };
